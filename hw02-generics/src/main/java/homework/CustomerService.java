@@ -2,18 +2,19 @@ package homework;
 
 import java.util.Comparator;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.TreeMap;
 
 //SuppressWarnings({"java:S1186", "java:S1135", "java:S1172"}) // при выполнении ДЗ эту аннотацию надо удалить
 public class CustomerService {
 
-    private TreeMap<Customer, String> customerMap;
+    private NavigableMap<Customer, String> customerMap;
 
     public CustomerService() {
         customerMap = new TreeMap<>(Comparator.comparingLong(Customer::getScores));
     }
 
-    public Map.Entry<Customer, String> copyMapEntry(Map.Entry<Customer, String> originalEntry) {
+    private Map.Entry<Customer, String> copyMapEntry(Map.Entry<Customer, String> originalEntry) {
         Map.Entry<Customer, String> copy = null;
         if(originalEntry != null) {
             copy = Map.entry(new Customer(originalEntry.getKey()), originalEntry.getValue());
